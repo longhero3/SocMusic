@@ -1,0 +1,175 @@
+.sort-buttons {
+  margin: auto;
+  margin-bottom: 10px;
+  display: block;
+  * {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.jp-audio {
+  width: 100% !important;
+}
+
+.song-view {
+  height: 100%;
+
+  .sidebar {
+    height: 100%;
+    background-color: #1e3e46;
+
+    .current-song {
+      color: white;
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      padding-top: 20px;
+    }
+  }
+}
+
+.songs {
+  padding: 0;
+
+  .song.mix {
+    display: none;
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+
+    .name-and-singer {
+      text-align: center;
+      display: block;
+      font-weight: bold;
+    }
+
+    .view {
+      perspective: 1000px;
+      -webkit-perspective: 1000px;
+      width: 316px;
+      height: 216px;
+      position: relative;
+      border: 8px solid #fff;
+      box-shadow: 1px 1px 2px ;
+      box-sizing: border-box;
+      background: #333;
+
+      .view-back {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        background: #666;
+        z-index: 0;
+
+        span {
+          display: block;
+          float: right;
+          padding: 5px 20px;
+          width: 100%;
+          text-align: right;
+          font-size: 16px;
+          color: rgba(255,255,255,0.6);
+
+          &:first-child {
+            padding-top: 20px;
+          }
+        }
+
+        span[data-icon]:before {
+          content: attr(data-icon);
+          font-family: 'icons';
+          color: #aaa;
+          color: rgba(255,255,255,0.2);
+          text-shadow: 0 0 1px rgba(255,255,255,0.2);
+          padding-right: 5px;
+        }
+      }
+
+      &:hover .slice{
+        &.s1 {
+          transform: rotate3d(0,1,0,-55deg);
+          -webkit-transform: rotate3d(0,1,0,-55deg);
+        }
+
+        &.s2, &.s5 {
+          transform: translate3d(59px,0,0) rotate3d(0,1,0,20deg);
+          -webkit-transform: translate3d(59px,0,0) rotate3d(0,1,0,20deg);
+        }
+
+        &.s3 {
+          transform: translate3d(59px,0,0) rotate3d(0,1,0,30deg);
+          webkit-transform: translate3d(59px,0,0) rotate3d(0,1,0,30deg);
+        }
+
+        &.s4 {
+          transform: translate3d(59px,0,0) rotate3d(0,1,0,40deg);
+          -webkit-transform: translate3d(59px,0,0) rotate3d(0,1,0,40deg);
+        }
+
+        .overlay {
+          opacity: 1;
+        }
+      }
+
+      .slice {
+        position: relative;
+        background-image: url('../images/default-song.jpg');
+        width: 60px;
+        height: 100%;
+        z-index: 100;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transform-origin: left center;
+        transition: transform 150ms ease-in-out;
+        -webkit-transition: transform 150ms ease-in-out;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+
+        &.s1 {
+          background-position: 0px 0px;
+
+          .overlay {
+            background: -webkit-linear-gradient(left, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 100%);
+          }
+        }
+
+        &.s2 {
+          background-position: -60px 0px;
+          transform: translate3d(60px,0,0);
+          -webkit-transform: translate3d(60px,0,0);
+        }
+
+        &.s3 {
+          background-position: -120px 0px;
+          -webkit-transform: translate3d(60px,0,0);
+        }
+
+        &.s4 {
+          background-position: -180px 0px;
+          -webkit-transform: translate3d(60px,0,0);
+        }
+
+        &.s5 {
+          background-position: -240px 0px;
+          -webkit-transform: translate3d(60px,0,0);
+
+          .overlay {
+            background: -webkit-linear-gradient(right, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0) 100%);
+          }
+        }
+
+        .overlay {
+          width: 60px;
+          height: 100%;
+          opacity: 0;
+          position: absolute;
+          transition : opacity 150ms ease-in-out;
+          -webkit-transition : opacity 150ms ease-in-out;
+        }
+      }
+    }
+  }
+}

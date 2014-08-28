@@ -28,6 +28,10 @@ module.exports.policies = {
 
   '*': 'flash',
 
+  song: {
+    '*': 'flash'
+  },
+
   user: {
     new: 'flash',
     create: 'flash',

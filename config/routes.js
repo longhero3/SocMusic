@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'song/index'
   },
 
+  'GET /song/:id/increasePlayCount': 'SongController.increasePlayCount'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

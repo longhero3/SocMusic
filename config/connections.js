@@ -56,18 +56,18 @@ module.exports.connections = {
 //  * Run: npm install sails-mongo                                             *
 //  *                                                                          *
 //  ***************************************************************************/
-  localDiskDb: {
-    adapter: 'sails-mongo',
-    url: process.env.DB_URL
-//    url: 'mongodb://admin:123456@kahana.mongohq.com:10001/sails_hello'
-  }
-
-//  localDiskDb:{
+//  localDiskDb: {
 //    adapter: 'sails-mongo',
-//    host: 'localhost',
-//    port: 27017,
-//    database: 'hello_sails'
+//    url: process.env.DB_URL
+//    url: 'mongodb://admin:123456@kahana.mongohq.com:10001/sails_hello'
 //  }
+
+  localDiskDb:{
+    adapter: 'sails-mongo',
+    host: 'localhost',
+    port: 27017,
+    database: 'hello_sails'
+  }
 //
 //  /***************************************************************************
 //  *                                                                          *

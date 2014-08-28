@@ -21,7 +21,7 @@ module.exports = {
   },
 
   create: function (req, res, next) {
-    delete req.params.all()['admin'];
+    req.params.all()['admin'] = false;
     User.create(req.params.all(), function userCreated(err, user) {
       if (err) {
         req.session.flash = {
@@ -66,9 +66,16 @@ module.exports = {
   },
 
   update: function(req, res, next) {
-    if (!req.session.User.admin) {
-      delete req.params.all()['admin'];
+    var adminParam = req.params.all()['admin'];
+    if ( adminParam && adminParam === "on"){
+      req.params.all()['admin'] = true;
+    } else {
+      req.params.all()['admin'] = false;
     }
+    if (!req.session.User.admin) {
+      req.params.all()['admin'] = false;
+    }
+
     User.update(req.param('id'), req.params.all(), function userUpdated(err) {
       if (err) {
         return res.redirect('/user/edit' + req.param('id'));

@@ -1,1 +1,1 @@
-window.myApp = angular.module('sailsHelloApp', ['ngRoute']);
+window.myApp = angular.module('sailsHelloApp', ['ngRoute', 'ngResource']);

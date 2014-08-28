@@ -7,7 +7,7 @@
 
 module.exports = {
 	index: function(req, res, next) {
-    Song.find(function foundSongs(err, users) {
+    Song.find(function foundSongs(err, songs) {
       if (err) return next(err);
       res.view({
         songs: songs
@@ -15,12 +15,48 @@ module.exports = {
     });
   },
 
+  new: function(req, res,next) {
+    res.view();
+  },
+
+  create: function(req, res, next){
+    Song.create(req.params.all(), function(err, song){
+      if (err) {
+        return next(err);
+      }
+
+      req.file('file').upload(function (err, file){
+        console.log(file);
+        if (err) return next(err);
+        song.src = file[0].fd.split('/').slice(-1)[0];
+        song.save(function (err, song){
+          if (err) return next(err);
+          Song.publishCreate(song);
+          res.redirect('/song/new');
+        });
+      });
+    });
+  },
+
+  increasePlayCount: function(req, res, next){
+    Song.findOne(req.param('id'), function(err, song){
+      if (err) return next(err);
+      song.playCount = song.playCount + 1;
+      song.save(function(err, song){
+        if (err) return next(err);
+        var songUpdate = {id: song.id, playCount: song.playCount};
+        Song.publishUpdate(song.id, songUpdate);
+        res.send(200);
+      });
+    });
+  },
+
   subscribe: function(req, res, next){
     Song.find({}).exec(function(err, songs){
       if (err) return next(err);
-      Song.subscribe(req.socket, songs, ['incCount', 'index']);
+      Song.subscribe(req.socket);
+      Song.subscribe(req.socket, songs,['index', 'create', 'update']);
       res.json(songs);
     });
   }
 };
-

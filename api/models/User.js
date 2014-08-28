@@ -49,16 +49,6 @@ module.exports = {
     });
   },
 
-  beforeUpdate: function(values, next){
-    if (values.admin !== undefined || values.admin) {
-      values.admin = true;
-    } else {
-      console.log('Do not go there!!!!!!!!!!!!!!!!!');
-      values.admin = false;
-    }
-    next();
-  },
-
   beforeCreate: function(values, next){
     if (!values.password || values.password != values.confirmation) {
       return next({error: ["Password doesn\'t match password confirmation."]})
