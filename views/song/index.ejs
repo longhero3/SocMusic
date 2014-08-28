@@ -2,12 +2,12 @@
   <div class="col-md-4 gray sidebar">
     <div class="current-song" ng-switch on="isSongSelected()">
       <div ng-switch-when="false">
-          Select a song to play.
+          Select a song to play!
       </div>
       <div ng-switch-when="true">
         <div class="singer-avatar">
           <img src="/images/kitten.png"/>
-          <h2 class="singer-name">{{song.singer}}</h2>
+          <h2 class="singer-name">{{currentSong.singer}}</h2>
         </div>
         <div id="currentSongPlayer" class="jp-jplayer"></div>
       </div>
