@@ -1,0 +1,29 @@
+<div class="chat-panel" ng-controller="SongChatController">
+  <div class="listener-list">
+    <ul class="listeners">
+      <li class="listener" ng-repeat="listener in listeners">
+        <span class="listener-icon fa fa-user"></span>
+        <div class="listener-name">{{listener.name}}</div>
+        <div class="listener-action">
+          <span class="fa fa-wechat"></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="song-chat-section">
+    <div class="chat-area">
+      <ul class="chatMessages">
+        <li ng-repeat="message in chatMessages" class="message" ng-class="messageClass(message)">
+          <div class="message-header" ng-bind="whoSay(message)">
+          </div>
+          <div class="message-content">
+            {{message.content}}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="chat-input">
+      <input type="text" ng-model="chatInput" ng-keypress="sendMessage($event)" class="tf-chat" />
+    </div>
+  </div>
+</div>

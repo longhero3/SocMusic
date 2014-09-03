@@ -10,6 +10,11 @@
 
 .jp-audio {
   width: 100% !important;
+  border: none !important;
+
+  .jp-volume-max {
+    display: none !important;
+  }
 }
 
 .song-view {
@@ -17,7 +22,7 @@
 
   .sidebar {
     height: 100%;
-    background-color: #1e3e46;
+    background-color: #282828;
 
     .singer-avatar {
       padding-top: 10px;
@@ -62,6 +67,12 @@
       font-size: 14px;
       font-weight: bold;
       padding-top: 20px;
+
+      #jp_container_1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
     }
   }
 }
@@ -111,6 +122,10 @@
 
           &:first-child {
             padding-top: 20px;
+          }
+
+          &.fa {
+            cursor: pointer;
           }
         }
 

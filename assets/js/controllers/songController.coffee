@@ -7,12 +7,13 @@ myApp.controller "SongController", [
       $scope.$apply()
       $('.songs').mixItUp()
 
+    $scope.shared.chatOpened = false
+
     $scope.init = ->
       angular.element("#currentSongPlayer").jPlayer
       return
 
     $scope.updateSongs = (event) ->
-      console.log("Song update event")
       switch event.verb
         when 'updated'
           $scope.updateSong(event)
@@ -49,9 +50,12 @@ myApp.controller "SongController", [
           return
 
     $scope.playSong = (song) ->
-      $http.get("/song/#{song.id}/increasePlayCount")
-      $scope.currentSong = song
-
+      if $scope.currentSong != song
+        $scope.currentSong = song
+        $http
+          url: "/song/#{song.id}/increasePlayCount"
+          method: 'POST'
+          data: $scope.currentUser
 
     $scope.songRank = (song) ->
       song.playCount
@@ -60,6 +64,18 @@ myApp.controller "SongController", [
       $scope.currentSong?
 
     $scope.playerShownClass = ->
-      console.log $scope.currentSong?
       "hidden" unless $scope.currentSong?
+
+    $scope.openChatClass = ->
+      "move-right" if $scope.shared.chatOpened == true
+
+    $scope.joinSongRoom = (song) ->
+      $scope.shared.chatOpened = true
+      io.socket.get '/song/subscribeSongRoom',
+        id: song.id
+      , (data) ->
+        console.log('subscribed')
+
+    $scope.hideSongRoom = ->
+      $scope.shared.chatOpened = false
 ]

@@ -27,6 +27,11 @@ module.exports = {
     playCount: {
       type: 'integer',
       defaultsTo: 0
+    },
+
+    listeners: {
+      collection: 'unknownUser',
+      via: 'songChannel'
     }
   }
 };

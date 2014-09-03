@@ -1,0 +1,105 @@
+.chat-panel {
+  background-color: #282828;
+  border-left: 1px solid #303030;
+
+  .listener-list {
+    .listeners {
+      margin: 0;
+      padding: 0;
+      display: block;
+      height: 200px;
+      width: 100%;
+
+      li.listener {
+        list-style-type: none;
+        color: white;
+        height: 50px;
+        border-bottom: 1px solid #303030;
+        box-sizing: border-box;
+        display: block;
+
+        & > * {
+          display: inline-block;
+          line-height: 50px;
+        }
+
+        .listener-icon {
+          font-size: 20px;
+          width: 5%;
+          text-align: center;
+          margin-top: -1px;
+        }
+
+        .listener-name {
+          width: 32%;
+        }
+
+        .listener-action {
+          background-color: #323232;
+          text-align: center;
+          width: 5%;
+          
+          .fa{
+            font-size: 20px;
+          }
+          
+          &:hover {
+            background-color: #4B7D5C;
+          }
+        }
+      }
+    }
+  }
+  .song-chat-section {
+    position: fixed;
+    width: 43%;
+    bottom: 28px;
+    padding: 0 10px;
+
+    .chat-area {
+      height: 300px;
+      background: white;
+      overflow-y: scroll;
+
+      ul.chatMessages {
+        margin: 0;
+        padding: 0;
+
+        li.message {
+          list-style-type: none;
+          display: block;
+          border: 1px solid #EDEDEF;
+          margin-bottom: 5px;
+          padding: 0 10px;
+
+          .message-header {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: black;
+          }
+
+          .message-content {
+            color: black;
+          }
+
+          &.self-message {
+            border-left: 2px solid #5281C8;
+          }
+
+          &.other-message {
+            border-right: 3px solid #8AD493;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .chat-input{
+      .tf-chat {
+        width: 100%;
+        color: black;
+      }
+    }
+  }
+}

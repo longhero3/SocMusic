@@ -30,6 +30,7 @@ var jsFilesToInject = [
   'js/dependencies/jquery.jplayer.js',
   'js/dependencies/angular.min.js',
   'js/dependencies/angular-resource.js',
+  'js/dependencies/angular-cache.js',
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',

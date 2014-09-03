@@ -58,5 +58,15 @@ module.exports = {
       Song.subscribe(req.socket, songs,['index', 'create', 'update']);
       res.json(songs);
     });
+  },
+
+  subscribeSongRoom: function(req, res, next){
+    sails.sockets.join(req.socket, req.param('id'));
+    res.send(200);
+  },
+
+  sendSongMessage: function(req, res, next){
+    sails.sockets.broadcast(req.param('id'), 'songChat', req.params.all(), req.socket);
+    res.send(200);
   }
 };

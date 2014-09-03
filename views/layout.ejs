@@ -30,68 +30,24 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/chat-panel.css">
     <link rel="stylesheet" href="/styles/custom.css">
+    <link rel="stylesheet" href="/styles/font-awesome.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/styles/jplayer.blue.monday.css">
+    <link rel="stylesheet" href="/styles/nav.css">
     <link rel="stylesheet" href="/styles/songs.css">
     <!--STYLES END-->
   </head>
 
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/"> activityOverlord</a>
-            </div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <% if (session.authenticated) { %>
-                  <li class="active"><a href="/user/show/<%= session.User.id %>"><%= session.User.name %> </a> </li>
-                <% } %>
-                <% if (session.authenticated && session.User.admin) { %>
-                <li><a href="/user">User Administration</a></li>
-                <li><a href="#">Placeholder2</a></li>
-                <% } %>
-              </ul>
-              <div class="navbar-right">
-                <% if (session.authenticated) { %>
-                  <a class="btn btn-default navbar-btn navbar-right" href="/session/destroy">sign-out</a>
-                <% } %>
-              </div>
-              <% if (!session.authenticated) { %>
-                <form class="navbar-form navbar-right" action="/session/create">
-                <div class="form-group">
-                  <input type="text" placeholder="Email" name="email" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="password" placeholder="Password" name="password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-                <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-              </form>
-              <% } %>
-            </div>
-          </div>
-        </div>
-
-    <%- body %>
-
-    <!--<div class="container">-->
-        <!--<hr>-->
-        <!--<footer class="footer pull-right">-->
-            <!--<div>-->
-                <!--<a href="http://sailsjs.com/">sails.js</a>-->
-                <!--<div>Made by Dang Hoang Long</div>-->
-            <!--</div>-->
-        <!--</footer>-->
-    <!--</div>-->
-
-
+  <body ng-controller="HomeController" ng-init="init()">
+    <%- partial('partials/_nav.ejs') %>
+    <div class="off-canvas" ng-controller="SongController" ng-class="openChatClass()" ng-init="init()">
+      <div class="inner-wrap">
+        <%- partial('partials/_chatPanel.ejs') %>
+        <%- body %>
+      </div>
+    </div>
 
     <!--
         Client-side Templates
@@ -149,13 +105,17 @@
     <script src="/js/dependencies/jquery.jplayer.js"></script>
     <script src="/js/dependencies/angular.min.js"></script>
     <script src="/js/dependencies/angular-resource.js"></script>
+    <script src="/js/dependencies/angular-cache.js"></script>
     <script src="/js/dependencies/angular-route.min.js"></script>
     <script src="/js/dependencies/jquery.validate.js"></script>
     <script src="/js/sailsHelloModule.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/controllers/homeController.js"></script>
+    <script src="/js/controllers/navController.js"></script>
+    <script src="/js/controllers/songChatController.js"></script>
     <script src="/js/controllers/songController.js"></script>
-    <script src="/js/controllers/userController.js"></script>
     <script src="/js/custom_validate.js"></script>
+    <script src="/js/services/cacheService.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

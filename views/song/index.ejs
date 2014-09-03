@@ -1,4 +1,4 @@
-<div class="song-view" ng-controller="SongController" ng-init="init()">
+<div class="song-view" ng-dblclick="hideSongRoom()">
   <div class="col-md-4 gray sidebar">
     <div class="current-song" ng-switch on="isSongSelected()">
       <div ng-switch-when="false">
@@ -65,6 +65,7 @@
           <div class="view-back">
             <span datacon="A">{{song.playCount}}</span>
             <span data-icon="B">15</span>
+            <span class="fa fa-group group-chat-btn" ng-click="joinSongRoom(song)">20</span>
           </div>
           <div class="slice s1">
             <span class="overlay"></span>
