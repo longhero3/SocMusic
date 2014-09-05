@@ -30,8 +30,8 @@ module.exports = {
     },
 
     listeners: {
-      collection: 'unknownUser',
-      via: 'songChannel'
+      collection: 'songListener',
+      via: 'song'
     }
   }
 };

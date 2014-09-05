@@ -3,12 +3,6 @@ myApp.controller 'SongChatController',[
   ($scope, $http, myCache) ->
 
     $scope.chatArea = ""
-    $scope.listeners = [
-      { name: 'Rycan' }
-      { name: 'Carry' }
-      { name: 'Jenifer Lorax' }
-      { name: 'Ronan Keating' }
-    ]
 
     $scope.chatMessages = []
 
@@ -18,6 +12,20 @@ myApp.controller 'SongChatController',[
           $scope.chatMessages.push(data)
           $scope.$apply()
           $scope.scrollToBottom('.chat-area')
+
+        window.onbeforeunload = ->
+          io.socket.get '/song/unsubscribeSongRoom',
+            user: $scope.shared.currentUser
+            songId: $scope.currentSong.id
+            listenerId: $scope.shared.currentListenerId
+          , (data) ->
+            console.log('User left')
+
+#        io.socket.get '/songListener',
+#          songId: $scope.currentSong.id
+#        , (data) ->
+#          $scope.listeners = data
+#          $scope.$apply()
 
     $scope.sendMessage = ($event) ->
       if $event.keyCode == 13

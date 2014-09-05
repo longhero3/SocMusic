@@ -21,7 +21,8 @@ module.exports = {
     },
 
     songChannel: {
-      model: 'song'
+      collection: 'songListener',
+      via: 'user'
     }
   },
 

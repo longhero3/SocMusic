@@ -1,10 +1,12 @@
 myApp.controller 'HomeController', [
-  '$scope', '$http', 'myCache'
-  ($scope, $http, myCache) ->
+  '$scope', '$http', 'myCache', '$sce'
+  ($scope, $http, myCache, $sce) ->
 
     $scope.init = ->
       $scope.shared =
         currentUser: ""
+        listeners: []
+        currentListenerId: ""
       if myCache.get('currentUser')?
         $scope.shared.currentUser = myCache.get('currentUser')
       else
@@ -14,4 +16,7 @@ myApp.controller 'HomeController', [
         .success (data) ->
           myCache.put('currentUser', data)
           $scope.shared.currentUser = data
+
+      debugger
+      $sce.getTrustedResourceUrl
 ]

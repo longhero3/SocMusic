@@ -55,7 +55,8 @@ myApp.controller "SongController", [
         $http
           url: "/song/#{song.id}/increasePlayCount"
           method: 'POST'
-          data: $scope.currentUser
+          data:
+            userId: $scope.shared.currentUser.id
 
     $scope.songRank = (song) ->
       song.playCount
@@ -71,10 +72,36 @@ myApp.controller "SongController", [
 
     $scope.joinSongRoom = (song) ->
       $scope.shared.chatOpened = true
+      $scope.listenToSongRoomEvent()
       io.socket.get '/song/subscribeSongRoom',
         id: song.id
+        user: $scope.shared.currentUser
       , (data) ->
-        console.log('subscribed')
+        $scope.retrieveSongListeners()
+
+    $scope.listenToSongRoomEvent = ->
+      io.socket.on 'songChatEntered', (data) ->
+        console.log('Somebody entered the room')
+        $scope.shared.listeners.push(data)
+        $scope.shared.currentListenerId = data.listenerId if data.id == $scope.shared.currentUser.id
+        $scope.$apply()
+
+      io.socket.on 'songChatLeft', (data) ->
+        angular.forEach $scope.shared.listeners, (listener) ->
+          if listener.id == data.id
+            songIndex = $scope.shared.listeners.indexOf(listener)
+            $scope.shared.listeners.splice(songIndex, 1)
+            $scope.$apply()
+            return
+
+    $scope.retrieveSongListeners = ->
+      $http
+        method: "GET"
+        url: '/songListener'
+        data:
+          songId: $scope.currentSong.id
+      .success (data) ->
+        $scope.shared.listeners = data
 
     $scope.hideSongRoom = ->
       $scope.shared.chatOpened = false

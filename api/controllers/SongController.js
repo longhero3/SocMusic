@@ -61,8 +61,26 @@ module.exports = {
   },
 
   subscribeSongRoom: function(req, res, next){
-    sails.sockets.join(req.socket, req.param('id'));
-    res.send(200);
+    //Create Song Listener record
+    SongListener.create({song: req.param('id'), user: req.param('user').id}).exec(function (err, listener){
+      if (err) return next(err);
+      sails.sockets.join(req.socket, req.param('id'));
+      var temp = req.param('user');
+      temp['listenerId'] = listener.id;
+      sails.sockets.broadcast(req.param('id'), 'songChatEntered', temp);
+      res.send(200);
+    });
+  },
+
+  unsubscribeSongRoom: function (req, res, next){
+    SongListener.findOne(req.param('listenerId')).exec(function (err, listener){
+      if (err) return next(err);
+      SongListener.destroy(req.param('listenerId')).exec(function (err){
+        if (err) return next(err);
+        sails.sockets.broadcast(req.param('songId'), 'songChatLeft', req.param('user'), req.socket);
+        sails.sockets.leave(req.socket, req.param('songId'));
+      });
+    });
   },
 
   sendSongMessage: function(req, res, next){
