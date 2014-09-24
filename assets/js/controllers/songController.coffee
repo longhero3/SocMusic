@@ -29,7 +29,7 @@ myApp.controller "SongController", [
         ready: ->
           $(this).jPlayer "setMedia",
             title: $scope.currentSong.name + " - " + $scope.currentSong.singer
-            mp3: "http://localhost:1337/uploads/#{$scope.currentSong.src}"
+            mp3: "/uploads/#{$scope.currentSong.src}"
           $('.jp-controls a').html('')
           $('.jp-controls a').addClass('fa')
           $(this).jPlayer "play"
