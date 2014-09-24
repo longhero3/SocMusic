@@ -10,6 +10,7 @@ myApp.controller "SongController", [
     $scope.shared.chatOpened = false
 
     $scope.init = ->
+      $scope.songDetailsDisplayed = false
       angular.element("#currentSongPlayer").jPlayer
       return
 
@@ -22,7 +23,6 @@ myApp.controller "SongController", [
 
       $scope.$apply()
       $('.songs').mixItUp('sort', 'order:desc')
-
       angular.element("#currentSongPlayer").html("")
       angular.element("#currentSongPlayer").html("<div id='song-player'></div>")
       angular.element("#song-player").jPlayer
@@ -30,11 +30,13 @@ myApp.controller "SongController", [
           $(this).jPlayer "setMedia",
             title: $scope.currentSong.name + " - " + $scope.currentSong.singer
             mp3: "http://localhost:1337/uploads/#{$scope.currentSong.src}"
-
+          $('.jp-controls a').html('')
+          $('.jp-controls a').addClass('fa')
           $(this).jPlayer "play"
 
           return
 
+        useStateClassSkin: false
         supplied: "mp3"
         size:
           width: "100%",
@@ -50,6 +52,7 @@ myApp.controller "SongController", [
           return
 
     $scope.playSong = (song) ->
+      $scope.songDetailsDisplayed = true unless $scope.songDetailsDisplayed
       if $scope.currentSong != song
         $scope.currentSong = song
         $http
@@ -70,8 +73,14 @@ myApp.controller "SongController", [
     $scope.openChatClass = ->
       "move-right" if $scope.shared.chatOpened == true
 
+    $scope.resetSongRoomData = ->
+      $scope.shared.listeners = []
+      $scope.chatMessages
+
     $scope.joinSongRoom = (song) ->
       $scope.shared.chatOpened = true
+      $scope.songDetailsDisplayed = false
+      $scope.resetSongRoomData()
       $scope.listenToSongRoomEvent()
       io.socket.get '/song/subscribeSongRoom',
         id: song.id
@@ -105,4 +114,6 @@ myApp.controller "SongController", [
 
     $scope.hideSongRoom = ->
       $scope.shared.chatOpened = false
+      #hide song detail
+      $scope.songDetailsDisplayed = false if $scope.songDetailsDisplayed
 ]

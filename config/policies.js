@@ -31,7 +31,6 @@ module.exports.policies = {
   song: {
     '*': 'flash'
   },
-
   user: {
     new: 'flash',
     create: 'flash',

@@ -4,12 +4,15 @@
 
   .listener-list {
     overflow: scroll;
+    width: 100%;
+
     .listeners {
       margin: 0;
       padding: 0;
       display: block;
       height: 200px;
       width: 100%;
+      overflow: scroll;
 
       li.listener {
         list-style-type: none;
@@ -26,19 +29,21 @@
 
         .listener-icon {
           font-size: 20px;
-          width: 5%;
+          width: 50px;
+          float: left;
           text-align: center;
           margin-top: -1px;
         }
 
         .listener-name {
-          width: 32%;
+          float: left;
         }
 
         .listener-action {
           background-color: #323232;
           text-align: center;
-          width: 5%;
+          width: 50px;
+          float: right;
           
           .fa{
             font-size: 20px;
@@ -53,25 +58,24 @@
   }
   .song-chat-section {
     position: fixed;
-    width: 43%;
+    width: 100%;
     bottom: 0;
-    padding: 0 10px;
 
     .chat-area {
       height: 300px;
-      background: white;
+      background: transparent;
       overflow-y: scroll;
 
       ul.chatMessages {
-        margin: 0;
         padding: 0;
+        margin: 0;
 
         li.message {
           list-style-type: none;
           display: block;
-          border: 1px solid #EDEDEF;
-          margin-bottom: 5px;
+          border-radius: 10px;
           padding: 0 10px;
+          margin: 0 20px 5px 20px;
 
           .message-header {
             font-weight: bold;
@@ -85,12 +89,39 @@
           }
 
           &.self-message {
-            border-left: 2px solid #5281C8;
+            background-color: white;
+
+            &::after {
+              top: -30px;
+              left: -20px;
+              bottom: auto;
+              border-width: 17px 20px 0 0;
+              border-color: transparent white;
+            }
+          }
+
+          &::after {
+            content: "";
+            position: relative;
+            border-style: solid;
+            display: block;
+            width: 0;
           }
 
           &.other-message {
-            border-right: 3px solid #8AD493;
             text-align: right;
+            background-color: #4B7D5C;
+            > * {
+              color: white;
+            }
+
+            &::after {
+              top: -30px;
+              left: 100%;
+              bottom: auto;
+              border-width: 17px 0 0 20px;
+              border-color: transparent #4B7D5C;
+            }
           }
         }
       }

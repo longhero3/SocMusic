@@ -15,5 +15,5 @@ myApp.controller 'NavController', [
           $scope.editing = false
 
     $scope.userNavClass = ->
-      if $scope.editing then "col-md-4" else "col-md-3"
+      if $scope.editing then "col-xs-11 col-xs-offset-1" else "col-xs-11 col-xs-offset-1"
 ]

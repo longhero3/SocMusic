@@ -16,7 +16,4 @@ myApp.controller 'HomeController', [
         .success (data) ->
           myCache.put('currentUser', data)
           $scope.shared.currentUser = data
-
-      debugger
-      $sce.getTrustedResourceUrl
 ]

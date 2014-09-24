@@ -8,6 +8,7 @@ myApp.controller 'SongChatController',[
 
     $scope.$watch 'currentSong', ->
       if $scope.currentSong?
+        $scope.chatMessages = []
         io.socket.on 'songChat', (data) ->
           $scope.chatMessages.push(data)
           $scope.$apply()
@@ -39,6 +40,7 @@ myApp.controller 'SongChatController',[
         $scope.chatMessages.push(messageData)
         $scope.chatInput = ""
         $scope.scrollToBottom('.chat-area')
+        return
 
     $scope.scrollToBottom = (element) ->
       angular.element(element).animate

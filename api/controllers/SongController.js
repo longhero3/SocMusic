@@ -25,7 +25,7 @@ module.exports = {
         return next(err);
       }
 
-      req.file('file').upload(function (err, file){
+      req.file('file').upload({dirname: '../../assets/uploads'},function (err, file){
         console.log(file);
         if (err) return next(err);
         song.src = file[0].fd.split('/').slice(-1)[0];
