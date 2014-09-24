@@ -1,0 +1,499 @@
+/** Skin for jPlayer Plugin (jQuery JavaScript Library)* http://www.jplayer.org** Skin Name: Blue Monday** Copyright (c) 2010-2014 Happyworm Ltd* Licensed under the MIT license.*  - http://www.opensource.org/licenses/mit-license.php** Author: Silvia Benvenuti* Skin Version: 4.4 (jPlayer 2.6.0)* Date: 1st April 2014*/div.jp-audio,div.jp-audio-stream,div.jp-video {
+  /* Edit the font-size to counteract inherited font sizing.* Eg. 1.25em = 1 / 0.8em*/font-size:1.25em;
+  font-family:Verdana, Arial, sans-serif;
+  line-height:1.6;
+  color: #666;
+  background-color:#eee;
+}
+div.jp-audio {
+  width: 100%;
+  div.jp-type-single {
+    div.jp-interface {
+      height:52px;
+    }
+    div.jp-progress {
+      height: 52px;
+      width: auto;
+    }
+    div.jp-time-holder {
+      width: 100%;
+    }
+  }
+  div.jp-type-playlist {
+    div.jp-interface {
+      height: 53px;
+    }
+    div.jp-progress {
+      left:166px;
+      width:130px;
+    }
+    div.jp-time-holder {
+      left:166px;
+      top: 18px;
+      width:130px;
+    }
+  }
+  ul.jp-controls {
+    padding:20px 20px 0 20px;
+  }
+
+  div.jp-volume-bar {
+    display:none!important;
+    top:37px;
+    left:330px;
+  }
+  div.jp-time-holder {
+    position:absolute;
+    top: 18px;
+  }
+  .jp-type-single {
+    ul.jp-toggles {
+      width:25px;
+    }
+  }
+  .jp-type-playlist {
+    ul.jp-toggles {
+      width:55px;
+      margin: 0;
+      position: absolute;
+      left: 325px;
+      top: 50px;
+    }
+  }
+}
+div.jp-audio-stream {
+  width:182px;
+  div.jp-type-single {
+    div.jp-interface {
+      height:80px;
+    }
+  }
+  ul.jp-controls {
+    padding:20px 20px 0 20px;
+  }
+  div.jp-volume-bar {
+    top:37px;
+    left:92px;
+  }
+}
+div.jp-video-270p {
+  width:480px;
+  div.jp-video-play {
+    margin-top:-270px;
+    height:270px;
+  }
+}
+div.jp-video-360p {
+  width:640px;
+  div.jp-video-play {
+    margin-top:-360px;
+    height:360px;
+  }
+}
+div.jp-video-full {
+  width:480px;
+  height:270px;
+  position:static !important;
+  position:relative;
+  div {
+    div {
+      z-index:1000;
+    }
+  }
+  div.jp-jplayer {
+    top: 0;
+    left: 0;
+    position: fixed !important;
+    position: relative;
+    overflow: hidden;
+  }
+  div.jp-gui {
+    position: fixed !important;
+    position: static;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    z-index:1001;
+  }
+  div.jp-interface {
+    position: absolute !important;
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+  div.jp-video-play {
+    height:100%;
+  }
+}
+div.jp-interface {
+  position: relative;
+  background-color:#eee;
+  width:100%;
+  height: 53px;
+  ul.jp-controls {
+    list-style-type:none;
+    margin:0;
+    padding: 0;
+    overflow:hidden;
+    height: 53px;
+    display: block;
+    float:left;
+    a {
+      display:block;
+      height: 52px;
+      border-right: 1px solid #333333;
+      border-bottom: 1px solid #333333;
+      box-sizing: border-box;
+      line-height: 52px;
+      text-align: center;
+      overflow:hidden;
+      text-indent: 0px;
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+
+      &:hover {
+        color: white;
+        background-color: #4B7D5C;
+      }
+    }
+  }
+}
+
+div.jp-controls-holder {
+  clear: both;
+  width:440px;
+  margin:0 auto;
+  position: relative;
+  overflow:hidden;
+  top:-8px;
+}
+div.jp-video ul.jp-controls,div.jp-interface ul.jp-controls li {
+  display:inline;
+  float: left;
+}
+a.jp-play,a.jp-pause {
+  width:53px;
+  height:53px;
+}
+a.jp-play {
+  &::before {
+    content: "\f04b";
+  }
+}
+
+a.jp-pause {
+  &::before {
+    content: "\f04c";
+  }
+  background-color: #282828;
+  color: white!important;
+  display: none;
+}
+
+a.jp-stop, a.jp-previous, a.jp-next {
+  width:28px;
+  height:28px;
+  margin-top:6px;
+}
+a.jp-stop {
+  display: none!important;
+  background: url("../images/jplayer.blue.monday.jpg") 0 -83px no-repeat;
+  margin-left:10px;
+}
+a.jp-stop:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -29px -83px no-repeat;
+}
+a.jp-previous {
+  background: url("../images/jplayer.blue.monday.jpg") 0 -112px no-repeat;
+}
+a.jp-previous:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -29px -112px no-repeat;
+}
+a.jp-next {
+  background: url("../images/jplayer.blue.monday.jpg") 0 -141px no-repeat;
+}
+a.jp-next:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -29px -141px no-repeat;
+}
+div.jp-progress {
+  overflow:hidden;
+  background-color: #ddd;
+  border-bottom: 1px solid #333333;
+}
+div.jp-seek-bar {
+  background: transparent;
+  width:0px;
+  height:100%;
+  cursor: pointer;
+}
+div.jp-play-bar {
+  background: #282828;
+  width:0px;
+  height:100%;
+
+  &:hover {
+    background: #3D654C;
+  }
+}
+div.jp-seeking-bg {
+  background: url("../images/jplayer.blue.monday.seeking.gif");
+}
+a.jp-mute,a.jp-unmute,a.jp-volume-max {
+  width: 53px;
+  height: 53px;
+  border-right: none!important;
+  font-size: 18px;
+}
+div.jp-audio-stream div.jp-type-single a.jp-mute,div.jp-audio-stream div.jp-type-single a.jp-unmute {
+  margin-left:10px;
+}
+div.jp-audio a.jp-volume-max,div.jp-audio-stream a.jp-volume-max {
+  margin-left: 56px;
+}
+
+div.jp-video a.jp-mute,div.jp-video a.jp-unmute {
+  left: 50px;
+}
+a.jp-mute {
+  &::before {
+    content: "\f026";
+  }
+}
+a.jp-unmute {
+  &::before {
+    content: "\f028";
+  }
+  display: none;
+}
+a.jp-volume-max {
+  display: none !important;
+  background: url("../images/jplayer.blue.monday.jpg") 0 -186px no-repeat;
+}
+a.jp-volume-max:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -19px -186px no-repeat;
+}
+div.jp-volume-bar {
+  display: none;
+  position: absolute;
+  overflow:hidden;
+  background: url("../images/jplayer.blue.monday.jpg") 0 -250px repeat-x;
+  width:46px;
+  height:5px;
+  cursor: pointer;
+}
+div.jp-volume-bar-value {
+  display:none;
+  background: url("../images/jplayer.blue.monday.jpg") 0 -256px repeat-x;
+  width:0px;
+  height:5px;
+}
+div.jp-current-time,div.jp-duration {
+  width:60px;
+  font-size:.64em;
+  font-style:oblique;
+}
+div.jp-current-time {
+  float: left;
+  margin-left: 110px;
+  display:inline;
+  color: white;
+}
+div.jp-duration {
+  float: right;
+  margin-right: 5px;
+  display:inline;
+  text-align: right;
+  color: white;
+}
+div.jp-details {
+  font-weight:bold;
+  text-align:center;
+  li {
+    padding:5px 0;
+    font-weight:bold;
+  }
+}
+div.jp-details,div.jp-playlist {
+  width:100%;
+  background-color: #282828;
+  border-top:1px solid #009be3;
+
+  span.jp-title {
+    color: white;
+  }
+}
+div.jp-type-single div.jp-details,div.jp-type-playlist div.jp-details,div.jp-type-single div.jp-playlist {
+  border-top:none;
+}
+div.jp-details ul,div.jp-playlist ul {
+  list-style-type:none;
+  margin:0;
+  padding:0 20px;
+  font-size:.72em;
+}
+div.jp-playlist {
+  li {
+    padding:5px 0 4px 20px;
+    border-bottom:1px solid #eee;
+    div {
+      display:inline;
+    }
+  }
+}
+div.jp-type-playlist {
+  div.jp-playlist {
+    li:last-child {
+      padding:5px 0 5px 20px;
+      border-bottom:none;
+    }
+    li.jp-playlist-current {
+      list-style-type:square;
+      list-style-position:inside;
+      padding-left:7px;
+    }
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+    a:hover {
+      color:#0d88c1;
+    }
+    a.jp-playlist-current {
+      color:#0d88c1;
+    }
+    a.jp-playlist-item-remove {
+      float:right;
+      display:inline;
+      text-align:right;
+      margin-right:10px;
+      font-weight:bold;
+      color:#666;
+    }
+    a.jp-playlist-item-remove:hover {
+      color:#0d88c1;
+    }
+    span.jp-free-media {
+      float:right;
+      display:inline;
+      text-align:right;
+      margin-right:10px;
+      a {
+        color:#666;
+      }
+      a:hover {
+        color:#0d88c1;
+      }
+    }
+  }
+}
+span.jp-artist {
+  font-size:.8em;
+  color:#666;
+}
+div.jp-video-play {
+  width:100%;
+  overflow:hidden;
+  cursor:pointer;
+  background-color:rgba(0,0,0,0);
+}
+a.jp-video-play-icon {
+  position:relative;
+  display:block;
+  width: 112px;
+  height: 100px;
+  margin-left:-56px;
+  margin-top:-50px;
+  left:50%;
+  top:50%;
+  background: url("../images/jplayer.blue.monday.video.play.png") 0 0 no-repeat;
+  text-indent:-9999px;
+}
+div.jp-video-play:hover {
+  a.jp-video-play-icon {
+    background: url("../images/jplayer.blue.monday.video.play.png") 0 -100px no-repeat;
+  }
+}
+div.jp-jplayer audio,div.jp-jplayer {
+  width:0px;
+  height:0px;
+}
+div.jp-jplayer {
+  background-color: #000000;
+}
+ul.jp-toggles {
+  list-style-type:none;
+  padding:0;
+  margin:0 auto;
+  overflow:hidden;
+  li {
+    display:block;
+    float:right;
+    a {
+      display:block;
+      width:25px;
+      height:18px;
+      text-indent:-9999px;
+      line-height:100%;
+    }
+  }
+}
+a.jp-full-screen {
+  background: url("../images/jplayer.blue.monday.jpg") 0 -310px no-repeat;
+  margin-left: 20px;
+}
+a.jp-full-screen:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -30px -310px no-repeat;
+}
+a.jp-restore-screen {
+  background: url("../images/jplayer.blue.monday.jpg") -60px -310px no-repeat;
+  margin-left: 20px;
+}
+a.jp-restore-screen:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -90px -310px no-repeat;
+}
+a.jp-repeat {
+  background: url("../images/jplayer.blue.monday.jpg") 0 -290px no-repeat;
+  display: none!important;
+}
+a.jp-repeat:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -30px -290px no-repeat;
+}
+a.jp-repeat-off {
+  background: url("../images/jplayer.blue.monday.jpg") -60px -290px no-repeat;
+}
+a.jp-repeat-off:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -90px -290px no-repeat;
+}
+a.jp-shuffle {
+  background: url("../images/jplayer.blue.monday.jpg") 0 -270px no-repeat;
+  margin-left: 5px;
+}
+a.jp-shuffle:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -30px -270px no-repeat;
+}
+a.jp-shuffle-off {
+  background: url("../images/jplayer.blue.monday.jpg") -60px -270px no-repeat;
+  margin-left: 5px;
+}
+a.jp-shuffle-off:hover {
+  background: url("../images/jplayer.blue.monday.jpg") -90px -270px no-repeat;
+}
+.jp-no-solution {
+  padding:5px;
+  font-size:.8em;
+  background-color:#eee;
+  border:2px solid #009be3;
+  color:#000;
+  display:none;
+  a {
+    color:#000;
+  }
+  span {
+    font-size:1em;
+    display:block;
+    text-align:center;
+    font-weight:bold;
+  }
+}
