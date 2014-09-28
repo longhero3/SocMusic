@@ -88,7 +88,7 @@ myApp.controller "SongController", [
         id: song.id
         user: $scope.shared.currentUser
       , (data) ->
-        $scope.retrieveSongListeners()
+        $scope.retrieveSongListeners(song.id)
 
     $scope.listenToSongRoomEvent = ->
       io.socket.on 'songChatEntered', (data) ->
@@ -105,12 +105,10 @@ myApp.controller "SongController", [
             $scope.$apply()
             return
 
-    $scope.retrieveSongListeners = ->
+    $scope.retrieveSongListeners = (songId)->
       $http
         method: "GET"
-        url: '/songListener'
-        data:
-          songId: $scope.currentSong.id
+        url: "/songListener?songId=#{songId}"
       .success (data) ->
         $scope.shared.listeners = data
 
