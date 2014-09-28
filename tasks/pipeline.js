@@ -32,13 +32,12 @@ var jsFilesToInject = [
   'js/dependencies/angular.min.js',
   'js/dependencies/angular-resource.js',
   'js/dependencies/angular-cache.js',
-  'js/dependencies/**/*.js',
+  'js/dependencies/*.js',
 
-  //main module
+  //main angular module
   'js/sailsHelloModule.js',
   //services
   'js/services/cacheService.js',
-  'js/sailsHelloModule.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

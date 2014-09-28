@@ -1,5 +1,6 @@
 .chat-panel {
   background-color: #282828;
+  box-sizing: border-box;
   border-left: 1px solid #303030;
 
   .listener-list {
@@ -128,9 +129,30 @@
     }
 
     .chat-input{
+      margin: 0 20px 7px;
       .tf-chat {
-        width: 100%;
+        width: 80%;
         color: black;
+        height:50px;
+        line-height: 50px;
+        border: none;
+        background-color: #FFFFFF;
+        padding-left: 20px;
+
+        &:focus {
+          outline: none!important;
+        }
+      }
+
+      .btn-send {
+        width: 20%;
+        float:right;
+        overflow:hidden;
+        background-color: #4B7D5C;
+        color: #F5F5F5;
+        height: 50px;
+        line-height: 50px;
+        border: none;
       }
     }
   }

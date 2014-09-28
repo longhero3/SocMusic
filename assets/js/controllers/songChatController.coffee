@@ -15,18 +15,7 @@ myApp.controller 'SongChatController',[
           $scope.scrollToBottom('.chat-area')
 
         window.onbeforeunload = ->
-          io.socket.get '/song/unsubscribeSongRoom',
-            user: $scope.shared.currentUser
-            songId: $scope.currentSong.id
-            listenerId: $scope.shared.currentListenerId
-          , (data) ->
-            console.log('User left')
-
-#        io.socket.get '/songListener',
-#          songId: $scope.currentSong.id
-#        , (data) ->
-#          $scope.listeners = data
-#          $scope.$apply()
+          $scope.leaveSongRoom()
 
     $scope.sendMessage = ($event) ->
       if $event.keyCode == 13
