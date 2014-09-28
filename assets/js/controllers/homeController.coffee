@@ -1,6 +1,6 @@
 myApp.controller 'HomeController', [
   '$scope', '$http', 'myCache', '$sce'
-  ($scope, $http, myCache, $sce) ->
+  ($scope, $http, myCache) ->
 
     $scope.init = ->
       $scope.shared =

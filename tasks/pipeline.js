@@ -22,8 +22,9 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-  
-  // Load sails.io before everything else
+
+
+  //all dependency
   'js/dependencies/sails.io.js',
   'js/dependencies/jquery-1.11.1.js',
   'js/dependencies/jquery.mixitup.js',
@@ -31,9 +32,12 @@ var jsFilesToInject = [
   'js/dependencies/angular.min.js',
   'js/dependencies/angular-resource.js',
   'js/dependencies/angular-cache.js',
-
-  // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
+
+  //main module
+  'js/sailsHelloModule.js',
+  //services
+  'js/services/cacheService.js',
   'js/sailsHelloModule.js',
 
   // All of the rest of your client-side js files
