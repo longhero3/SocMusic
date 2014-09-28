@@ -150,8 +150,9 @@ div.jp-interface {
       overflow:hidden;
       text-indent: 0px;
       text-decoration: none;
-      color: black;
+      color: #434343;
       font-size: 16px;
+      background-color: #282828;
 
       &:hover {
         color: white;
@@ -187,9 +188,10 @@ a.jp-pause {
   &::before {
     content: "\f04c";
   }
-  background-color: #282828;
+  background-color: #5E5982 !important;
   color: white!important;
   display: none;
+  border: none!important;
 }
 
 a.jp-stop, a.jp-previous, a.jp-next {
@@ -219,7 +221,7 @@ a.jp-next:hover {
 }
 div.jp-progress {
   overflow:hidden;
-  background-color: #ddd;
+  background-color: #282828;
   border-bottom: 1px solid #333333;
 }
 div.jp-seek-bar {
@@ -229,7 +231,7 @@ div.jp-seek-bar {
   cursor: pointer;
 }
 div.jp-play-bar {
-  background: #282828;
+  background: #34323A;
   width:0px;
   height:100%;
 
@@ -293,16 +295,16 @@ div.jp-current-time,div.jp-duration {
   width:60px;
   font-size:.64em;
   font-style:oblique;
+  position: absolute;
+  top: 17px;
 }
 div.jp-current-time {
-  float: left;
-  margin-left: 110px;
+  margin-left: 5px;
   display:inline;
   color: white;
 }
 div.jp-duration {
-  float: right;
-  margin-right: 5px;
+  right: 5px;
   display:inline;
   text-align: right;
   color: white;
@@ -315,15 +317,14 @@ div.jp-details {
     font-weight:bold;
   }
 }
-div.jp-details,div.jp-playlist {
-  width:100%;
-  background-color: #282828;
-  border-top:1px solid #009be3;
-
-  span.jp-title {
-    color: white;
-  }
+span.jp-title {
+  position: absolute;
+  left: 163px;
+  color: white;
+  font-size: 14px;
+  top: 15px;
 }
+
 div.jp-type-single div.jp-details,div.jp-type-playlist div.jp-details,div.jp-type-single div.jp-playlist {
   border-top:none;
 }
