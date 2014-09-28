@@ -23,24 +23,6 @@ myApp.controller "SongController", [
 
       $scope.$apply()
       $('.songs').mixItUp('sort', 'order:desc')
-      angular.element("#currentSongPlayer").html("")
-      angular.element("#currentSongPlayer").html("<div id='song-player'></div>")
-      angular.element("#song-player").jPlayer
-        ready: ->
-          $(this).jPlayer "setMedia",
-            title: $scope.currentSong.name + " - " + $scope.currentSong.singer
-            mp3: "/uploads/#{$scope.currentSong.src}"
-          $('.jp-controls a').html('')
-          $('.jp-controls a').addClass('fa')
-          $(this).jPlayer "play"
-
-          return
-
-        useStateClassSkin: false
-        supplied: "mp3"
-        size:
-          width: "100%",
-          height: "180px"
       return
 
     io.socket.on "song", $scope.updateSongs
@@ -53,8 +35,28 @@ myApp.controller "SongController", [
 
     $scope.playSong = (song) ->
       $scope.songDetailsDisplayed = true unless $scope.songDetailsDisplayed
+
       if $scope.currentSong != song
         $scope.currentSong = song
+        angular.element("#currentSongPlayer").html("")
+        angular.element("#currentSongPlayer").html("<div id='song-player'></div>")
+        angular.element("#song-player").jPlayer
+          ready: ->
+            $(this).jPlayer "setMedia",
+              title: $scope.currentSong.name + " - " + $scope.currentSong.singer
+              mp3: "/uploads/#{$scope.currentSong.src}"
+            $('.jp-controls a').html('')
+            $('.jp-controls a').addClass('fa')
+            $(this).jPlayer "play"
+
+            return
+
+          useStateClassSkin: false
+          supplied: "mp3"
+          size:
+            width: "100%",
+            height: "180px"
+
         $http
           url: "/song/#{song.id}/increasePlayCount"
           method: 'POST'
