@@ -118,4 +118,13 @@ myApp.controller "SongController", [
       $scope.shared.chatOpened = false
       #hide song detail
       $scope.songDetailsDisplayed = false if $scope.songDetailsDisplayed
+      $scope.leaveSongRoom()
+
+    $scope.leaveSongRoom = ->
+      io.socket.get '/song/unsubscribeSongRoom',
+        user: $scope.shared.currentUser
+        songId: $scope.currentSong.id
+        listenerId: $scope.shared.currentListenerId
+      , (data) ->
+        console.log('User left')
 ]
