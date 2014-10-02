@@ -17,24 +17,29 @@ myApp.controller 'SongChatController',[
         window.onbeforeunload = ->
           $scope.leaveSongRoom()
 
-    $scope.sendMessage = ($event) ->
-      if $event.keyCode == 13
-        messageData =
-          id: $scope.currentSong.id
-          sender: $scope.shared.currentUser
-          content: $scope.chatInput
-        io.socket.get '/song/sendSongMessage', messageData, (data) ->
-          console.log("Message sent")
-
-        $scope.chatMessages.push(messageData)
-        $scope.chatInput = ""
-        $scope.scrollToBottom('.chat-area')
+    $scope.sendMessage = ->
+      unless $scope.chatInput
         return
+      messageData =
+        id: $scope.currentSong.id
+        sender: $scope.shared.currentUser
+        content: $scope.chatInput
+      io.socket.get '/song/sendSongMessage', messageData, (data) ->
+        console.log("Message sent")
+
+      $scope.chatMessages.push(messageData)
+      $scope.chatInput = ""
+      $scope.scrollToBottom('.chat-area')
+      return
+
+    $scope.returnMessage = ($event) ->
+      if $event.keyCode == 13
+        $scope.sendMessage()
 
     $scope.scrollToBottom = (element) ->
       angular.element(element).animate
         scrollTop: $(element)[0].scrollHeight
-      , 1000
+      , 100
 
     $scope.messageClass = (message) ->
       if message.sender.id == $scope.shared.currentUser.id then "self-message" else "other-message"
