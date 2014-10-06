@@ -1,6 +1,6 @@
 <div class="navigation" ng-controller="NavController">
   <div class="username" ng-class="userNavClass()">
-    <label>Welcome,</label>
+    <label>Hi,</label>
     <label class="username-label" ng-hide="editing" ng-click="editing = true">{{shared.currentUser.name}}!</label>
     <input class="username-input" type="text" ng-show="editing" ng-model="shared.currentUser.name" ng-keypress="setUsername($event)"></div>
   </div>
